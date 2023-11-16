@@ -96,6 +96,33 @@ public class SpecialtyServiceTest {
 		assertEquals(TELEPHONE, ownerCreated.getTelephone());
 	}
 
+	@Test
+	public void testDeleteOwner() {
+		String FIRST_NAME = "Betty";
+		String LAST_NAME = "Davis";
+		String ADDRESS = "110 W. Liberty St.";
+		String CITY = "Madison";
+		String TELEPHONE = "6085551023";
 
+		// Crear un nuevo propietario
+		Owner owner = new Owner(FIRST_NAME, LAST_NAME, ADDRESS, CITY, TELEPHONE);
+		Owner ownerCreated = ownerService.create(owner);
+
+		// Obtener el ID del propietario creado
+		Integer ownerId = ownerCreated.getId();
+
+		// Verificar que el propietario se haya creado correctamente
+		assertNotNull(ownerId);
+
+		// Eliminar el propietario por ID
+		try {
+			ownerService.deleteById(ownerId);
+		} catch (OwnerNotFoundException e) {
+			fail(e.getMessage());
+		}
+
+		// Intentar obtener el propietario nuevamente debería lanzar una excepción
+		assertThrows(OwnerNotFoundException.class, () -> ownerService.findById(ownerId));
+	}
 
 }

@@ -36,6 +36,15 @@ public class OwnerServiceImpl implements OwnerService {
         return owner.get();
     }
 
+    //Diego Ferrer
+    @Override
+    public void deleteById(Integer id) throws OwnerNotFoundException {
+        if (!ownerRepository.existsById(id)) {
+            throw new OwnerNotFoundException("Owner not found with id: " + id);
+        }
+        ownerRepository.deleteById(id);
+    }
+
     @Override
     public List<Owner> findByFirstName(String firstName) {
         return ownerRepository.findByFirstName(firstName);

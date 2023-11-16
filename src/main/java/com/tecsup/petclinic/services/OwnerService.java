@@ -9,9 +9,6 @@ public interface OwnerService {
 
     Owner create(Owner owner);
 
-
-
-
     Owner findById(Integer id) throws OwnerNotFoundException;
 
     List<Owner> findByFirstName(String firstName);
@@ -21,6 +18,9 @@ public interface OwnerService {
     List<Owner> findByCity(String city);
 
     List<Owner> findByTelephone(String telephone);
+
+    //Diego Ferrer
+    void deleteById(Integer id) throws OwnerNotFoundException;
 
     List<Owner> findAll();
 }
