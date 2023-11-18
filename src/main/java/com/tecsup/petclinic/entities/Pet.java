@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * 
+ *
  * @author jgomezm
  *
  */
@@ -27,7 +27,7 @@ public class Pet {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "birth_date")
 	private Date birthDate;
-	
+
 	public Pet() {
 	}
 
